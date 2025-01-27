@@ -1,5 +1,12 @@
 
 # pytest test_grouping_tests_with_classes.py
+
+# To run a specific test file:
+# pytest test_math.py
+
+# To run a specific test function:
+# pytest test_math.py::test_addition
+
 class TestMathOperations:
     def test_addition(self):
         assert 2 + 2 == 4
