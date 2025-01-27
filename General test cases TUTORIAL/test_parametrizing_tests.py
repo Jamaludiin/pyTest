@@ -1,6 +1,8 @@
 # You can run the same test with multiple inputs using parametrize.
 
 # pytest test_parametrizing_tests.py
+
+# pytest -v test_parametrizing_tests.py
 import pytest
 
 @pytest.mark.parametrize("x, y, result", [
@@ -20,5 +22,5 @@ def test_add(x, y, result):
     (2, 4, 8),
     ])
 
-def test_multiplication(x,y,result):
+def test_multiplication(x, y, result):
     assert x * y == result

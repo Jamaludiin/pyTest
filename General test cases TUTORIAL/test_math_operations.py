@@ -5,6 +5,8 @@ import pytest
 from Simple_Projects.math_operations import add, subtract, multipilication
 
 # pytest test_math_operations.py::test_multipilication
+
+# pytest -v test_math_operations.py
 def test_add():
     assert add(3, 2) == 5
     assert add(-1, 1) == 0
