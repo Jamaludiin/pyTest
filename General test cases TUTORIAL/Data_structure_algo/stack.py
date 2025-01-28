@@ -6,14 +6,14 @@ class Stack:
         self.stack = []
 
     def push(self, value):
-        self.stack.append(value)
+        self.stack.append(value) # (add to the top).
 
     def pop(self):
         if not self.is_empty():
-            return self.stack.pop()
+            return self.stack.pop() # (remove from the top).
         return "Stack is empty"
 
-    def peek(self):
+    def peek(self): # (view the top element).
         if not self.is_empty():
             return self.stack[-1]
         return "Stack is empty"
