@@ -4,6 +4,9 @@
 # pytest -v test_compare.py
 # pytest test_compare.py -v
 
+
+# Substring Matching of Test Names
+# fromat:    pytest -k <substring> -v
 def test_greater():
    num = 100
    assert num > 10
