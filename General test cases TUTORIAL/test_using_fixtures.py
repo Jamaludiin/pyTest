@@ -1,4 +1,6 @@
-# Fixtures are reusable pieces of setup code for tests. For example, if all your tests need a database connection or a sample object, you can use a fixture.
+# Fixtures are reusable pieces of setup code for tests. 
+# For example, if all your tests need a database connection or a sample object, 
+# you can use a fixture.
 
 import pytest
 
