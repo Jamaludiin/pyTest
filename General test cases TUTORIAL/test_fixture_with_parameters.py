@@ -18,6 +18,20 @@ def test_addition(add_data):
                               # this is the shape of each test (a,b, expected)
     assert a + b == expected
 
+
+# Second set of parameters
+@pytest.fixture(params=[(10, 20, 30), (3, 7, 10), (4, 6, 10)])
+def add_data_2(request):
+    return request.param
+
+# Test function using both fixtures
+def test_addition_two(add_data, add_data_2):
+    a1, b1, expected1 = add_data
+    a2, b2, expected2 = add_data_2
+
+    assert a1 + b1 == expected1
+    assert a2 + b2 == expected2
+
 """
 @pytest.fixture(params=[...]):
     This defines a fixture named add_data, which provides test data.
