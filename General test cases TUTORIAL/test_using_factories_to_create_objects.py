@@ -15,4 +15,9 @@ def test_user(user_factory):
     assert user["name"] == "Alice"
     assert user["age"] == 30
 
+def test_another_user(user_factory):
+    user2 = user_factory("Jamal", 29)
+    assert user2["name"] == "Jamal"
+    assert user2["age"] == 29
+
 
