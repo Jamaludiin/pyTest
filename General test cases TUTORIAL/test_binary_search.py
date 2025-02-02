@@ -11,3 +11,5 @@ def test_binary_search():
     target = 100
 
     assert binary_search(arr, target) == 6
+    assert binary_search(arr, 200) == -1
+

@@ -47,3 +47,24 @@ def test_linear_search_using_fixture(sample_array):
 
 def test_linear_search_param(sample_array, target, expected_index):
     assert linear_search(sample_array, target) == expected_index
+
+
+#--------------------OPTION FOUR--------------------
+
+# Step 4: Using a Factory for Custom Arrays
+# If you want dynamic test data, use a factory fixture:
+
+@pytest.fixture
+def array_factory():
+    def create_array(*values):
+        return list(values)
+    return create_array
+
+@pytest.mark.parametrize("arr, target, expected_index", [
+    ([5, 15, 25, 35], 15, 1), # Test 1: 15 found at index 1
+    ([1, 2, 3, 4, 5], 4, 3), # Test 2: 4 found at index 3
+    ([100, 200, 300], 500, -1) # Test 3: 500 NOT found, should return -1
+])
+def test_linear_search_with_factory(array_factory, arr, target, expected_index):
+    array = array_factory(*arr)  # Dynamically create arrays
+    assert linear_search(array, target) == expected_index
