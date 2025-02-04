@@ -50,6 +50,11 @@ def test_is_empty(queue):
     assert queue.is_empty() is True  # Queue should be empty after dequeuing the only element
 
 
+
+
+
+#-------------------MORE TEST FEATURES AND OPTIONS ONLY-------------------
+
 #--------------------OPTION ONE--------------------
 #----------------------------
 # We can use fixtures and @pytest.mark.parametrize to make your queue tests 
@@ -96,3 +101,52 @@ def test_is_empty2(sample_array):
     assert q.is_empty() is False  # Queue should be not be empty after dequeuing only one element
 
 
+
+#--------------------OPTION TWO--------------------
+# Step 3: Use @pytest.mark.parametrize for Multiple Cases
+# Instead of testing one case, let's test multiple values with @pytest.mark.parametrize:
+@pytest.mark.parametrize("value", [10, 30, 50, 99])
+
+def test_enqueue3(value):
+    q = Queue()
+    q.enqueue(value)
+    assert q.peek() == value  # Check if the first enqueued value is correct
+
+
+
+#------------------OPTION THREE---------------
+# USE BOTH FIXTURE AND PARAM
+
+# Step 1: Create a Fixture for Sample Arrays
+@pytest.fixture
+def sample_array():
+    return [10, 30, 20, 50, 60]
+
+# Step 2: Use Parametrize with the Fixture
+@pytest.mark.parametrize("value", [10, 30, 50, 99])
+
+def test_enqueue(sample_array, value):
+    q = Queue()
+    for num in sample_array:  
+        q.enqueue(num)  # Enqueue all fixture values
+    
+    q.enqueue(value)  # Enqueue the parameterized value
+    assert q.peek() == sample_array[0]  # Ensure first enqueued value is still correct
+
+
+# ✅ Add Parameterization to this Test Too!
+@pytest.mark.parametrize("value", [10, 30, 50, 99])
+# ✅ Each test that needs value must have its own @pytest.mark.parametrize.
+# If you want both tests to share the same parameter values, put them inside a test class with a class-level @pytest.mark.parametrize:
+
+def test_dequeue_the_parameterized_value(sample_array, value):
+    q = Queue()
+
+    # Enqueue all fixture values first
+    for num in sample_array:
+        q.enqueue(num)
+
+    q.enqueue(value)  # Enqueue the parameterized value
+    q.dequeue()  # Remove one element
+
+    assert q.is_empty() is False  # Ensure queue is not empty yet
